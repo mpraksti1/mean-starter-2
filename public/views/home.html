@@ -11,4 +11,11 @@
     <ul>
     	<li ng-repeat="person in users">{{ person.name }}</li>
     </ul>
+
+    <input ng-model="lesson.name">
+    <a href="#" ng-click="addALesson()">Click to add a class</a>
+
+    <ul>
+    	<li ng-repeat="lesson in lessons">{{ lesson.name }}</li>
+    </ul>
 </div>

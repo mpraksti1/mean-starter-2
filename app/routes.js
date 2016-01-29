@@ -39,6 +39,35 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/api/lesson', function(req, res) {
+        // use mongoose to get all users in the database
+        Lesson.find(function(err, lessons) {
+
+            // if there is an error retrieving, send the error. 
+                            // nothing after res.send(err) will execute
+            if (err)
+                res.send(err);
+
+            res.json(lessons); // return all users in JSON format
+        });
+    });
+
+    // route to handle creating goes here (app.post)
+    app.post('/api/lesson', function(req, res) {
+
+        var lesson = new Lesson();
+        lesson.name = req.body.name;
+
+        // save the user and check for errors
+        lesson.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Lesson created!' });
+        });
+    });
+
+
     // route to handle delete goes here (app.delete)
 
     // frontend routes =========================================================
