@@ -1,0 +1,14 @@
+<!-- public/views/home.html -->
+
+<div class="jumbotron text-center">
+    <h1>Home Page 4 Life</h1>
+
+    <p>{{ tagline }}</p>
+
+	<input ng-model="user.name">
+    <a href="#" ng-click="addAUser()">Click to add a user</a>
+
+    <ul>
+    	<li ng-repeat="person in users">{{ person.name }}</li>
+    </ul>
+</div>
