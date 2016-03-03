@@ -1,8 +1,8 @@
 // app/routes.js
 
 // grab the User model we just created
-var User = require('./models/user');
-var Lesson = require('./models/lesson');
+var User    = require('./models/user');
+var Lesson  = require('./models/lesson');
 
 module.exports = function(app) {
 
@@ -24,6 +24,19 @@ module.exports = function(app) {
         });
     });
 
+     app.get('/api/user/:_id', function(req, res) {
+        // use mongoose to get all users in the database
+        User.findById(req.params._id, function(err, user) {
+
+            // if there is an error retrieving, send the error. 
+                            // nothing after res.send(err) will execute
+            if (err)
+                res.send(err);
+
+            res.json(user); // return all users in JSON format
+        });
+    });   
+
     // route to handle creating goes here (app.post)
     app.post('/api/user', function(req, res) {
 
@@ -38,6 +51,29 @@ module.exports = function(app) {
             res.json({ message: 'User created!' });
         });
     });
+
+    app.put('/api/user/:_id', function(req, res) {
+        User.findById(req.params._id, function(err, user) {
+
+            if (err) res.send(err);
+            console.log(req);
+            if (req.body.krav == true) user.krav.push({date: new Date() });
+            if (req.body.jujitsu == true) user.jujitsu.push({date: new Date() });
+            if (req.body.kempo == true) user.kempo.push({date: new Date() });
+            // set the new user information if it exists in the request            
+
+            // save the user
+            user.save(function(err) {
+               if (err) res.send(err);
+
+                // return a message
+                res.json({ message: 'User updated!' });
+
+             });
+        });
+    });
+
+    //LESSON ROUTES
 
     app.get('/api/lesson', function(req, res) {
         // use mongoose to get all users in the database
@@ -66,7 +102,6 @@ module.exports = function(app) {
             res.json({ message: 'Lesson created!' });
         });
     });
-
 
     // route to handle delete goes here (app.delete)
 

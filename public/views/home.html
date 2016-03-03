@@ -9,13 +9,12 @@
     <a href="#" ng-click="addAUser()">Click to add a user</a>
 
     <ul>
-    	<li ng-repeat="person in users">{{ person.name }}</li>
+    	<li ng-repeat="person in users" ng-click="setStudent(person)">{{ person }}</li>
     </ul>
 
-    <input ng-model="lesson.name">
-    <a href="#" ng-click="addALesson()">Click to add a class</a>
-
-    <ul>
-    	<li ng-repeat="lesson in lessons">{{ lesson.name }}</li>
-    </ul>
+	<ul>
+		<li ng-repeat="lesson in lessons">
+			<a href="#" ng-click="signIn(lesson.name)">Click me to sign in for {{lesson.name}}</a>	
+		</li>
+	</ul>    
 </div>
