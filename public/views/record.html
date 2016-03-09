@@ -1,0 +1,9 @@
+<div class="year" ng-repeat="year in yearsCollection[0].years">
+	<h2>{{year.year}}</h2>
+	<ul>
+		<li ng-repeat="month in year.months">
+			{{month.name}}
+			{{month.count}}
+		</li>
+	</ul>
+</div>

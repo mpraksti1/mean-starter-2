@@ -10,10 +10,21 @@
         })
 
         // users page that will use the NerdController
-        .when('/users', {
+        .when('/user', {
             templateUrl: 'views/user.html',
             controller: 'UserController'
-        });
+        })
+
+        .when('/userrecords', {
+            templateUrl: 'views/userrecords.html',
+            controller: 'UserController'
+        })
+        
+        .when('/record', {
+            templateUrl: 'views/record.html',
+            controller: 'UserController'
+        })
+        .otherwise({redirectTo:'/'});;
 
     $locationProvider.html5Mode(true);
 

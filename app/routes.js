@@ -54,12 +54,13 @@ module.exports = function(app) {
 
     app.put('/api/user/:_id', function(req, res) {
         User.findById(req.params._id, function(err, user) {
+        var d = new Date();
+        var timestampM = d.getMonth();
 
             if (err) res.send(err);
-            console.log(req);
-            if (req.body.krav == true) user.krav.push({date: new Date() });
-            if (req.body.jujitsu == true) user.jujitsu.push({date: new Date() });
-            if (req.body.kempo == true) user.kempo.push({date: new Date() });
+            if (req.body.krav == true) user.krav.push({date: timestampM });
+            if (req.body.jujitsu == true) user.jujitsu.push({date: timestampM });
+            if (req.body.kempo == true) user.kempo.push({date: timestampM });
             // set the new user information if it exists in the request            
 
             // save the user

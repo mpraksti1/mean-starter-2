@@ -1,20 +1,4 @@
 <!-- public/views/home.html -->
-
-<div class="jumbotron text-center">
-    <h1>Home Page 4 Life</h1>
-
-    <p>{{ tagline }}</p>
-
-	<input ng-model="user.name">
-    <a href="#" ng-click="addAUser()">Click to add a user</a>
-
-    <ul>
-    	<li ng-repeat="person in users" ng-click="setStudent(person)">{{ person }}</li>
-    </ul>
-
-	<ul>
-		<li ng-repeat="lesson in lessons">
-			<a href="#" ng-click="signIn(lesson.name)">Click me to sign in for {{lesson.name}}</a>	
-		</li>
-	</ul>    
-</div>
+<img src="/img/logoBIG.png" alt="">
+<input ng-model="user.name">
+<a href="#" ng-click="addAUser()">Click to add a user</a>

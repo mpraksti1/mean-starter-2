@@ -1,7 +1,15 @@
-<!-- public/views/user.html -->
-
-<div class="jumbotron text-center">
-    <h1>People who need food</h1>
-
-    <p>{{ tagline }}</p>
+<div class="student-area">
+	<h2>Hi, {{ userData.name }}</h2>
+	<p>Pick a class to sign in for</p>
+	<ul class="class-list clearfix">
+		<li class="class-btn" 
+			ng-repeat="lesson in lessons" 
+			ng-click="signIn(lesson.name)">
+			
+			<a href="/">
+				<img src="img/classes/class{{ $index + 1 }}.jpg" alt="">
+				<p>{{ lesson.name }}</p>
+			</a>
+		</li>
+	</ul>
 </div>
